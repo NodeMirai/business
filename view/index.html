@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="yes" name="apple-touch-fullscreen" />
+  <meta content="telephone=no" name="format-detection" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>react-single-page</title>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+
+<% for (var i = 0; i < htmlWebpackPlugin.files.js.length; i++) { %>
+  <% if (webpackConfig.mode === 'production') { %>
+    <script type="text/javascript" src="<%= webpackConfig.name %>/image/js/dist/<%= htmlWebpackPlugin.files.js[i] %>"></script>
+  <% } %>
+<% } %>
+
+<% if (webpackConfig.mode === 'production') { %>
+  <script src="<%= webpackConfig.name %>/lib/flexible.js"></script>
+<% } else { %>
+  <script type="text/javascript" src="static/lib/flexible.js"></script>
+<% } %>
+
+<!-- 支付宝环境中引入 alipayBridge -->
+<script type="text/javascript">
+  if (/AlipayClient/i.test(navigator.userAgent)) {
+    var script = document.createElement('script')
+    script.src = 'https://a.alipayobjects.com/g/component/antbridge/1.1.4/antbridge.min.js'
+    var body = document.body || document.documentElement
+    body.appendChild(script)
+  }
+</script>
+</html>

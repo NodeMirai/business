@@ -1,0 +1,2 @@
+# mock资源文件
+开发模式下配合webpack-dev-server下的contentBase访问

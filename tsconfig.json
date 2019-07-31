@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "noUnusedParameters": false,
+        "experimentalDecorators": true, // 确保装饰器可用
+        "module": "esnext", // 指定编译为哪种模块系统代码
+        "target": "ES5",
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "baseUrl": ".", // AMD模块标准中适用
+        "moduleResolution": "Node",
+        "lib": [
+            "es2018",
+            "dom"
+        ],
+        "paths": {
+            "pages/*": [
+                "./src/pages/*"
+            ],
+            "components/*": [
+                "./src/components/*"
+            ],
+            "assets/*": [
+                "./src/assets/*"
+            ]
+        },
+    },
+}
