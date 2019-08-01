@@ -9,12 +9,6 @@ store.use(homeModel)
   home
 }))
 export default class Home extends Component<any, any> {
-  
-  onClick = (e: any) => {
-    const { path = '/' } = e.target.dataset
-    const { history } = this.props
-    history.push(path)
-  }
 
   render() {
     const { home } = this.props
@@ -24,9 +18,6 @@ export default class Home extends Component<any, any> {
       <div>
         <h2>{title}</h2>
         <p>{content}</p>
-        <ul onClick={this.onClick}>
-          <li data-path='/async'>go home</li>
-        </ul>
       </div>
     )
   }

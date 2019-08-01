@@ -2,12 +2,7 @@ import React, { Component } from 'react'
 import { setTitle, isIPhoneX } from 'assets/tool'
 import action from 'assets/action'
 
-interface IProps {
-  [propName: string]: any
-}
-
-export default class BaseComponent extends Component<IProps, any> {
-  namespace: string
+export default class BaseComponent extends Component<any, any> {
 
   constructor(props) {
     super(props)

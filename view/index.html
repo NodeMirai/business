@@ -21,9 +21,9 @@
 <% } %>
 
 <% if (webpackConfig.mode === 'production') { %>
-  <script src="<%= webpackConfig.name %>/lib/flexible.js"></script>
+  <script src="/<%= webpackConfig.name %>/lib/flexible.js"></script>
 <% } else { %>
-  <script type="text/javascript" src="static/lib/flexible.js"></script>
+  <script type="text/javascript" src="/static/lib/flexible.js"></script>
 <% } %>
 
 <!-- 支付宝环境中引入 alipayBridge -->

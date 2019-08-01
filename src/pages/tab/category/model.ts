@@ -3,12 +3,12 @@ import { store } from 'assets/store'
 import http from 'assets/http'
 
 const initData = {
-  title: 'This is home',
+  title: 'This is category',
   content: 'This is content'
 }
 
-const homeModel = {
-  namespace: 'home',
+export default {
+  namespace: 'categoryModel',
   state: initData,
   reducers: {
     update(state, { payload }) {
@@ -25,5 +25,4 @@ const homeModel = {
   },
 }
 
-export default homeModel
 

@@ -1,12 +1,14 @@
 import { action } from 'assets/store'
+import { store } from 'assets/store'
 import http from 'assets/http'
 
 const initData = {
-  currentTabkey: 'home'
+  title: 'This is consult',
+  content: 'This is content'
 }
 
 export default {
-  namespace: 'tabModel',
+  namespace: 'consultModel',
   state: initData,
   reducers: {
     update(state, { payload }) {
@@ -18,16 +20,9 @@ export default {
   },
   effects: {
     *getInitData({}, { all, call, put }) {
-      const data = yield call(getChartData)
-
-      console.log('getInitData', data)
+      
     },
   },
 }
 
-function getChartData(params) {
-  return http.ajax({
-    url: '/b/home',
-    params
-  })
-}
+

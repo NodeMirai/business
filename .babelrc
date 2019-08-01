@@ -3,6 +3,7 @@
       ["@babel/plugin-proposal-decorators", { "legacy": true }],
       "@babel/plugin-transform-classes",
       "@babel/plugin-transform-runtime",
+      ["import", { "libraryName": "antd-mobile", "style": "css" }]
     ],
     "presets": [
       [

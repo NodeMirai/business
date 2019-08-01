@@ -5,6 +5,7 @@ const config = [
     path: 'tab',
     component: 'tab',
     title: '登录',
+    isExact: false,
   }
 ]
 

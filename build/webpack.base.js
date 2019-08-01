@@ -61,9 +61,6 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: [
-          path.join(__dirname, '../node_modules/antd/dist/antd.css')
-        ],
         use: [
           'style-loader',
           'css-loader',
@@ -78,12 +75,8 @@ module.exports = {
           'sass-loader',
         ]
       },
-      {
-        test: /\.less$/,   // antd使用的less
-        include: [
-          path.join(__dirname, '../node_modules/ant-design-pro'),
-          path.join(__dirname, '../node_modules/ant'),
-        ],
+      /* {
+        test: /\.less$/,  
         use: [
           'style-loader',
           'css-loader',
@@ -94,7 +87,7 @@ module.exports = {
             }
           }
         ]
-      },
+      }, */
     ],
   },
 }

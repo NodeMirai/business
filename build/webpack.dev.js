@@ -13,6 +13,8 @@ module.exports = merge.smart(
     output: {
       path: path.resolve(__dirname, '../dist/'),
       filename: '[name]-[hash:8].js',
+      chunkFilename: '[name].min.js',
+      publicPath: '/'
     },
     devtool: 'cheap-module-eval-source-map',
 
