@@ -1,18 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { store } from 'assets/store'
-import homeModel from './model'
+import { Carousel } from 'antd-mobile'
+import dvaModel from './model'
+import InitComponent from 'components/base/life-cycle/init-component'
+import './style'
 
-store.use(homeModel)
+store.use(dvaModel)
 
-@connect(({home}) => ({
-  home
+@connect(({homeModel}) => ({
+  homeModel
 }))
-export default class Home extends Component<any, any> {
+export default class Home extends InitComponent {
+
+  state = {
+    model: 'homeModel'
+  }
 
   render() {
-    const { home } = this.props
-    const { title, content } = home
+    const { homeModel } = this.props
+    const { title, content } = homeModel
 
     return (
       <div>

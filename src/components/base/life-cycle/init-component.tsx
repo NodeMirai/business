@@ -5,10 +5,6 @@ import BaseComponent from '../index'
 // 页面组件
 class InitComponent extends BaseComponent {
 
-  dispatch = (type: string, payload?: object) => {
-    this.props.dispatch(action(type, payload))
-  }
-
   componentDidMount() {
     const { model } = (this.state as any) || { model: '' }
     if (!model) {

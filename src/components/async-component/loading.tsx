@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-//import { Toast } from '@q/q-react'
 
 interface IProps {
   error: any
@@ -8,11 +7,6 @@ class Loading extends Component<IProps, any> {
   getContent() {
     const { error } = this.props
 
-    /* if (error) {
-      console.error('[AsyncComponent Error]: ', error)
-      Toast.fail('加载出错，请稍后重试')
-      return ''
-    } */
     return (
       <div className='sk-fading-circle'>
         <div className='sk-circle1 sk-circle' />

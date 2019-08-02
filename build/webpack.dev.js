@@ -24,9 +24,11 @@ module.exports = merge.smart(
       port: 8080,
       historyApiFallback: true,
       proxy: {
-        '/b/*': {
-          target: 'http://localhost:8086',
-          pathRewrite: {"^/b" : ""}
+        '/_mock/*': {
+          target: 'http://localhost:8080/',
+          pathRewrite: function(path) {
+            return path.replace(/^\/_mock/, '/mock').replace(/\/?$/, '/index.json')
+          }
         },
       }
     },
@@ -36,9 +38,13 @@ module.exports = merge.smart(
         title: '标题',
         template: path.resolve(__dirname, '../view/index.html'),
         // filename: 'index.html',    // 该字段的意义在于可以将注入好的html改名为服务端需要的模板引擎格式
-        inject: true,
+        inject: true,   // 一般只在dev下使用，prod需要定制模版的引用资源
         favicon: path.resolve(__dirname, '../static/image/favicon.ico')
       }),
+      // 需要查查具体用途再考虑加
+      /* new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('development'),
+      }), */
     ]
   }
 )
