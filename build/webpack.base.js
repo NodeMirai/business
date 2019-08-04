@@ -3,17 +3,17 @@
  * 1. context上下文基础变量
  * 2. resolve别名处理：主要可用来简化import时路径
  *    extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.sass', '.less', '.css'],
- *    alias: {}   
+ *    alias: {}
  * 3. module：基础loader
  * - js，jsx，tsx
  * - 样式scss、less
  * - 兼容性autoprefixer
  * 4. 插件
- * - HtmlWebpackPlugin: 
+ * - HtmlWebpackPlugin:
  * - DllReferencePlugin: (需要确定是干嘛用的)
  */
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const path = require('path')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   name: 'single-page-react',
@@ -25,47 +25,52 @@ module.exports = {
       new TsconfigPathsPlugin({
         configFile: path.resolve(__dirname, '../tsconfig.json'),
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.sass', '.less', '.css'],
-      })
+      }),
     ],
     alias: {
-      // 工具js方法
-      // 图片
-      // 工具scss样式
-    }
+      /**
+       * 现由tsconfig接管
+       * 1. 工具js方法
+       * 2. 图片
+       * 3. 工具scss样式
+       * 4. 组件目录
+       * 5. ...
+       */
+    },
   },
   module: {
     rules: [
+      {
+        // 确保代码在未经过处理时进行检测，添加enforce: pre配置项
+        enforce: 'pre',
+        test: /\.(jsx|tsx|js|ts)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader'
-          }
-        ]
+            loader: 'babel-loader',
+          },
+        ],
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader'     // ts-loader编译的结果还需要babel-loader进行一次处理，才可确保兼容????? ts-loader自身是否可直接编译为es5呢？？？
+            loader: 'babel-loader',    // ts-loader编译的结果还需要babel-loader进行一次处理，才可确保兼容????? ts-loader自身是否可直接编译为es5呢？？？
           },
           {
             loader: 'ts-loader',
             options: {
               transpileOnly: true,     // 该配置可确保只存在静态分析，但在执行的时候不会因为静态分析中出现的问题报错
             },
-          }
-        ]
+          },
+        ],
       },
-      /* {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ]
-      }, */
       {
         test: /\.(scss|sass|css)$/,
         // exclude: /node_modules/,
@@ -74,10 +79,10 @@ module.exports = {
           'css-loader',
           'sass-loader',
           'postcss-loader',
-        ]
+        ],
       },
       /* {
-        test: /\.less$/,  
+        test: /\.less$/,
         use: [
           'style-loader',
           'css-loader',
@@ -100,7 +105,7 @@ module.exports = {
           priority: 100,
           name: 'vendors',
         },
-        'async-commons': {  // 异步加载公共包、组件等，优先抽离
+        asyncCommons: {  // 异步加载公共包、组件等，所有异步的东西都应该提前放在异步组件中
           chunks: 'async',
           minChunks: 2,
           name: 'async-commons',
@@ -112,7 +117,7 @@ module.exports = {
           name: 'commons',
           priority: 80,
         },
-      }
-    }
-  }
+      },
+    },
+  },
 }
