@@ -1,0 +1,28 @@
+.home {
+  // 待ui出设计稿后优化
+  &__category-list {
+    display: flex;
+    flex-wrap: wrap;
+    &__item {
+      width: 25%;
+      text-align: center;
+    }
+    .img {
+      background-size: cover;
+      height: 80px;
+    }
+  }
+
+  &__good-list {
+    display: flex;
+    flex-wrap: wrap;
+    &__item {
+      width: 25%;
+      text-align: center;
+    }
+    .img {
+      background-size: cover;
+      height: 80px;
+    }
+  }
+}

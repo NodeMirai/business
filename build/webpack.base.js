@@ -59,20 +59,21 @@ module.exports = {
           }
         ]
       },
-      {
+      /* {
         test: /\.css$/,
         use: [
           'style-loader',
           'css-loader',
         ]
-      },
+      }, */
       {
-        test: /\.(scss|sass)$/,
-        exclude: /node_modules/,
+        test: /\.(scss|sass|css)$/,
+        // exclude: /node_modules/,
         use: [
           'style-loader',
           'css-loader',
           'sass-loader',
+          'postcss-loader',
         ]
       },
       /* {
@@ -90,4 +91,28 @@ module.exports = {
       }, */
     ],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: { // 项目基本框架等,因为所有地方必用，因此最优先拆分
+          chunks: 'all',
+          test: /(react|react-dom|react-dom-router|core-js|redux)/,
+          priority: 100,
+          name: 'vendors',
+        },
+        'async-commons': {  // 异步加载公共包、组件等，优先抽离
+          chunks: 'async',
+          minChunks: 2,
+          name: 'async-commons',
+          priority: 90,
+        },
+        commons: { // 其他同步加载公共包
+          chunks: 'all',
+          minChunks: 2,
+          name: 'commons',
+          priority: 80,
+        },
+      }
+    }
+  }
 }

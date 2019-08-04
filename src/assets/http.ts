@@ -95,7 +95,7 @@ class Http {
     }
 
     toast(opt, data) {
-        if (data.code !== StatusCode.AuthCode && opt.toast) {
+        if (data.code !== StatusCode.SuccessCode && opt.toast) {
             // toast提示
             return Promise.reject(data)
         } 

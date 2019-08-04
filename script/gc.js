@@ -29,7 +29,7 @@ if (type !== 'page' && type !== 'component') throw new Error('type参数只能�
 if (type === 'page') {
   // 首先将template复制到path位置，然后通过模版引擎将变量替换
   let pagePath = path.resolve(__dirname, '../src/pages', name)
-  let templatePath = path.resolve(__dirname, '../src/_template')
+  let templatePath = path.resolve(__dirname, '../src/_template/page')
 
   /**
    * 根据模版创建页面文件
@@ -39,7 +39,8 @@ if (type === 'page') {
 
     fs.readFile(`${templatePath}/index.tsx`, function(err, sourceData) {
       const targetData = ejs.render(sourceData.toString(), {
-        model: name
+        name: name[0].toUpperCase() + name.slice(1),    // 组件名首字母大写
+        model: name,
       })
       fs.writeFile(`${pagePath}/index.tsx`, targetData, function(err) {
         if (err) console.error(err)
@@ -65,5 +66,28 @@ if (type === 'page') {
 }
 
 if (type === 'component') {
+  let componentPath = path.resolve(__dirname, '../src/components', name)
+  let templatePath = path.resolve(__dirname, '../src/_template/component')
 
+  fs.mkdir(componentPath, function(err) {
+
+    fs.readFile(`${templatePath}/index.tsx`, function(err, sourceData) {
+      const targetData = ejs.render(sourceData.toString(), {
+        className: name,
+        name: name[0].toUpperCase() + name.slice(1)    // 组件名首字母大写
+      })
+      fs.writeFile(`${componentPath}/index.tsx`, targetData, function(err) {
+        if (err) console.error(err)
+      })
+    })
+
+    fs.readFile(`${templatePath}/style.scss`, function(err, sourceData) {
+      const targetData = ejs.render(sourceData.toString(), {
+        className: name,
+      })
+      fs.writeFile(`${componentPath}/style.scss`, targetData, function(err) {
+        if (err) console.error(err)
+      })
+    })
+  })
 }

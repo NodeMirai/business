@@ -1,0 +1,11 @@
+.left-tab {
+  display: flex;
+  &__tabs {
+    flex-basis: 200px;
+    text-align: center;
+    background: yellow;
+  }
+  &__content {
+    flex-grow: 1;
+  }
+}

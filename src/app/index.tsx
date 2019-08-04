@@ -14,15 +14,16 @@ class App extends Component<any, any> {
   
   render() {
     return (
-      <Provider store={store}>
-        <Router history={history}>
-          {MyRouter.render(routes)}
-        </Router>
-      </Provider>
+      <div>
+        <Provider store={store}>
+          <Router history={history}>
+            {MyRouter.render(routes)}
+          </Router>
+        </Provider>
+      </div>
     )
   }
 }
 
 render(<App />, document.getElementById('app'))
-
 

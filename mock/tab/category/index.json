@@ -1,0 +1,70 @@
+{
+  "code": 200,
+  "data": {
+    "goodList": [
+      {
+        "id": 0,
+        "img_url": "http://5b0988e595225.cdn.sohucs.com/images/20180918/8cb4f421bc5f4f31852eb13ac63ba560.jpeg",
+        "text": "0号"
+      },
+      {
+        "id": 1,
+        "img_url": "http://5b0988e595225.cdn.sohucs.com/images/20180918/8cb4f421bc5f4f31852eb13ac63ba560.jpeg",
+        "text": "1号"
+      },
+      {
+        "id": 2,
+        "img_url": "http://5b0988e595225.cdn.sohucs.com/images/20180918/8cb4f421bc5f4f31852eb13ac63ba560.jpeg",
+        "text": "2号"
+      },
+      {
+        "id": 3,
+        "img_url": "http://5b0988e595225.cdn.sohucs.com/images/20180918/8cb4f421bc5f4f31852eb13ac63ba560.jpeg",
+        "text": "3号"
+      },
+      {
+        "id": 4,
+        "img_url": "http://5b0988e595225.cdn.sohucs.com/images/20180918/8cb4f421bc5f4f31852eb13ac63ba560.jpeg",
+        "text": "4号"
+      },
+      {
+        "id": 5,
+        "img_url": "http://5b0988e595225.cdn.sohucs.com/images/20180918/8cb4f421bc5f4f31852eb13ac63ba560.jpeg",
+        "text": "5号"
+      },
+      {
+        "id": 6,
+        "img_url": "http://5b0988e595225.cdn.sohucs.com/images/20180918/8cb4f421bc5f4f31852eb13ac63ba560.jpeg",
+        "text": "6号"
+      },
+      {
+        "id": 7,
+        "img_url": "http://5b0988e595225.cdn.sohucs.com/images/20180918/8cb4f421bc5f4f31852eb13ac63ba560.jpeg",
+        "text": "7号"
+      }
+    ],
+    "tabs": [
+      {
+        "id": 0,
+        "text": "0号"
+      },
+      {
+        "id": 1,
+        "text": "1号"
+      },
+      {
+        "id": 2,
+        "text": "2号"
+      },
+      {
+        "id": 3,
+        "text": "3号"
+      },
+      {
+        "id": 4,
+        "text": "4号"
+      }
+    ]
+  },
+  "message": ""
+}

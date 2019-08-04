@@ -6,6 +6,11 @@ const config = [
     component: 'tab',
     title: '登录',
     isExact: false,
+  },
+  {
+    path: 'search',
+    component: 'search',
+    title: '搜索',
   }
 ]
 

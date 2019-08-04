@@ -2,12 +2,12 @@ import { action } from 'assets/store'
 import http from 'assets/http'
 
 const initData = {
-  title: 'This is home',
+  searchContent: '',
   content: 'This is content'
 }
 
 export default {
-  namespace: '<%= model %>Model',
+  namespace: 'searchModel',
   state: initData,
   reducers: {
     update(state, { payload }) {
@@ -19,9 +19,14 @@ export default {
   },
   effects: {
     *getInitData({}, { all, call, put }) {
-      
+        // const res = yield call(getData)
     },
   },
 }
 
-
+function getData(params) {
+  return http.ajax({
+    url: '/demo',
+    params
+  })
+}

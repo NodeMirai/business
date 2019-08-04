@@ -1,15 +1,13 @@
 import { action } from 'assets/store'
-import { store } from 'assets/store'
 import http from 'assets/http'
 
 const initData = {
-  tabs: [],
-  goodList: [],
-  currentTabId: 0,
+  title: 'This is <%= model %>',
+  content: 'This is content'
 }
 
 export default {
-  namespace: 'categoryModel',
+  namespace: '<%= model %>Model',
   state: initData,
   reducers: {
     update(state, { payload }) {
@@ -21,15 +19,14 @@ export default {
   },
   effects: {
     *getInitData({}, { all, call, put }) {
-      const { data } = yield call(getCategory)
-      yield put(action('update', data))
+        const res = yield call(getData)
     },
   },
 }
 
-function getCategory(params) {
+function getData(params) {
   return http.ajax({
-    url: '/_mock/tab/category',
+    url: '/demo',
     params
   })
 }

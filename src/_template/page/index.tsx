@@ -8,7 +8,7 @@ store.use(dvaModel)
 @connect(({<%= model %>Model}) => ({
   <%= model %>Model
 }))
-export default class Home extends Component<any, any> {
+export default class <%= name %> extends Component<any, any> {
   
   render() {
     const { <%= model %>Model } = this.props

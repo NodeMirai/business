@@ -3,8 +3,9 @@ import { store } from 'assets/store'
 import http from 'assets/http'
 
 const initData = {
-  title: 'This is home',
-  content: 'This is content'
+  bannerList: [],
+  categoryList: [],
+  goodList: [],
 }
 
 export default {
@@ -26,10 +27,20 @@ export default {
      */
     *getInitData({}, { all, call, put }) {
       // 获取轮播图数据
-      const bannerRes = yield call(getBanner)
-      console.log('bannerRes', bannerRes)
+      const { data: bannerData } = yield call(getBanner)
+      yield put(action('update', {
+        bannerList: bannerData.bannerList
+      }))
       // 获取商品类目数据
+      const { data: categoryData } = yield call(getCategory)
+      yield put(action('update', {
+        categoryList: categoryData.categoryList
+      }))
       // 获取商品数据
+      const { data: goodsData } = yield call(getGoods)
+      yield put(action('update', {
+        goodList: goodsData.goodList
+      }))
     },
   },
 }
@@ -37,6 +48,20 @@ export default {
 function getBanner(params) {
   return http.ajax({
     url: '/_mock/tab/home/banner',
+    params
+  })
+}
+
+function getCategory(params) {
+  return http.ajax({
+    url: '/_mock/tab/home/category',
+    params
+  })
+}
+
+function getGoods(params) {
+  return http.ajax({
+    url: '/_mock/tab/home/good',
     params
   })
 }
