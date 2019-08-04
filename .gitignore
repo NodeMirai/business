@@ -2,3 +2,4 @@ dist
 node_modules
 stats.json
 .DS_Store
+yarn-error.log
