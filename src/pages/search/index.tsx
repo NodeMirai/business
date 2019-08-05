@@ -7,16 +7,19 @@ import dvaModel from './model'
 
 store.use(dvaModel)
 
-@connect(({searchModel}) => ({
-  searchModel
+@connect(({ searchModel }) => ({
+  searchModel,
 }))
 export default class Search extends Component<any, any> {
-  
-  autoFocusInst = null
+  autoFocusInst = null;
 
   componentDidMount() {
-    this.autoFocusInst.focus();
+    this.autoFocusInst.focus()
   }
+
+  onCancel = () => {
+    location.href = 'https://www.baidu.com/'
+  };
 
   render() {
     const { searchModel } = this.props
@@ -25,20 +28,17 @@ export default class Search extends Component<any, any> {
     return (
       <div>
         <SearchBar
-          ref={ref => this.autoFocusInst = ref}
+          ref={ref => (this.autoFocusInst = ref)}
           value={searchContent}
-          placeholder="Search"
+          placeholder='Search'
           onSubmit={value => console.log(value, 'onSubmit')}
           onClear={value => console.log(value, 'onClear')}
           onFocus={() => console.log('onFocus')}
           onBlur={() => console.log('onBlur')}
-          onCancel={() => history.goBack()}
+          onCancel={this.onCancel}
           showCancelButton
         />
       </div>
     )
   }
 }
-
-
-
