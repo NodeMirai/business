@@ -4,10 +4,10 @@ import { Route } from 'react-router-dom'
 
 let point = 0
 interface IRouterOption {
-  path: string
-  component: string | object
-  title?: string
-  isExact?: boolean
+  path: string;
+  component: string | object;
+  title?: string;
+  isExact?: boolean;
 }
 /**
  * union router constructor
@@ -29,15 +29,15 @@ export default class Router {
     return routes.map(route => route.render())
   }
 
-  public isExact: boolean = true
+  public isExact: boolean = true;
 
-  public path: string
+  public path: string;
 
-  public component: string | object
+  public component: string | object;
 
-  public title: string | undefined
+  public title: string | undefined;
 
-  public prefix: string = '/'
+  public prefix: string = '/';
 
   constructor(opts: IRouterOption) {
     const { path, component, title, isExact } = opts
@@ -59,7 +59,10 @@ export default class Router {
       Com.displayName = path
     } else {
       Com = AsyncComponent({
-        loader: () => import(`../../pages/${component}/index`),
+        loader: () => {
+          console.log('component', component)
+          import(`../../pages/${component}`)
+        },
         render(loaded, props) {
           const Component = loaded.default
           return <Component title={title} {...props} />
@@ -68,7 +71,7 @@ export default class Router {
     }
 
     return Com
-  }
+  };
 
   render() {
     const { path, isExact = true } = this

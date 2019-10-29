@@ -15,7 +15,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "antd-mobile": "^2.2.14",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "core-js": "2",
