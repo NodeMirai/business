@@ -29,7 +29,7 @@ if (type !== 'page' && type !== 'component') { throw new Error('type参数只能
 if (type === 'page') {
   // 首先将template复制到path位置，然后通过模版引擎将变量替换
   const pagePath = path.resolve(__dirname, '../src/pages', name)
-  const templatePath = path.resolve(__dirname, './_template/page')
+  const templatePath = path.resolve(__dirname, '../src/_template/page')
 
   /**
    * 根据模版创建页面文件
@@ -66,7 +66,7 @@ if (type === 'page') {
 
 if (type === 'component') {
   const componentPath = path.resolve(__dirname, '../src/components', name)
-  const templatePath = path.resolve(__dirname, './_template/component')
+  const templatePath = path.resolve(__dirname, '../src/_template/component')
 
   fs.mkdir(componentPath, function(err) {
     console.log('err', err)

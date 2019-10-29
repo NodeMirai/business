@@ -18,5 +18,5 @@
       "@assets/*": ["./src/assets/*"]
     }
   },
-  "exclude": ["node_modules", "./script/_*"]
+  "exclude": ["node_modules", ".src/_*"]
 }
