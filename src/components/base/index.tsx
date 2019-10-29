@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { setTitle, isIPhoneX } from 'assets/tool'
-import action from 'assets/action'
+import { setTitle, isIPhoneX } from '@assets/tool'
+import action from '@assets/action'
 
 export default class BaseComponent extends Component<any, any> {
-
   constructor(props) {
     super(props)
     const { title = '' } = this.props
@@ -14,7 +13,7 @@ export default class BaseComponent extends Component<any, any> {
     this.props.dispatch(action(type, payload))
   }
 
-  IPhoneXPadding = '34px'
+  IPhoneXPadding = '34px';
 
   get isIPhoneX() {
     return isIPhoneX()

@@ -1,9 +1,12 @@
 /**
  * 判断 action.type 是否处于 loading 状态
  */
-import { store } from 'assets/store'
+import { store } from '@assets/store'
 
-export default function(type: string | Array<string>, loading?: object): boolean {
+export default function(
+  type: string | Array<string>,
+  loading?: object
+): boolean {
   const state = loading || store.getState().loading
   if (typeof type === 'string') {
     return state.effects[type]

@@ -20,11 +20,29 @@ module.exports = {
   context: __dirname,
   resolve: {
     // mainFiles: ['index.tsx'],
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.sass', '.less', '.css'],
+    extensions: [
+      '.ts',
+      '.tsx',
+      '.js',
+      '.jsx',
+      '.scss',
+      '.sass',
+      '.less',
+      '.css',
+    ],
     plugins: [
       new TsconfigPathsPlugin({
         configFile: path.resolve(__dirname, '../tsconfig.json'),
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.sass', '.less', '.css'],
+        extensions: [
+          '.ts',
+          '.tsx',
+          '.js',
+          '.jsx',
+          '.scss',
+          '.sass',
+          '.less',
+          '.css',
+        ],
       }),
     ],
     alias: {
@@ -61,25 +79,17 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',    // ts-loader编译的结果还需要babel-loader进行一次处理，才可确保兼容????? ts-loader自身是否可直接编译为es5呢？？？
+            loader: 'babel-loader', // ts-loader编译的结果还需要babel-loader进行一次处理，才可确保兼容????? ts-loader自身是否可直接编译为es5呢？？？
           },
           {
             loader: 'ts-loader',
-            options: {
-              transpileOnly: true,     // 该配置可确保只存在静态分析，但在执行的时候不会因为静态分析中出现的问题报错
-            },
           },
         ],
       },
       {
         test: /\.(scss|sass|css)$/,
         // exclude: /node_modules/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-          'postcss-loader',
-        ],
+        use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
       },
       /* {
         test: /\.less$/,
@@ -99,19 +109,22 @@ module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        vendors: { // 项目基本框架等,因为所有地方必用，因此最优先拆分
+        vendors: {
+          // 项目基本框架等,因为所有地方必用，因此最优先拆分
           chunks: 'all',
           test: /(react|react-dom|react-dom-router|core-js|redux)/,
           priority: 100,
           name: 'vendors',
         },
-        asyncCommons: {  // 异步加载公共包、组件等，所有异步的东西都应该提前放在异步组件中
+        asyncCommons: {
+          // 异步加载公共包、组件等，所有异步的东西都应该提前放在异步组件中
           chunks: 'async',
           minChunks: 2,
           name: 'async-commons',
           priority: 90,
         },
-        commons: { // 其他同步加载公共包
+        commons: {
+          // 其他同步加载公共包
           chunks: 'all',
           minChunks: 2,
           name: 'commons',

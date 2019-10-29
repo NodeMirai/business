@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router-dom'
-import { store } from 'assets/store'
-import history from 'assets/history'
+import { store } from '@assets/store'
+import { history } from '@assets/history'
 import './style'
 
 import MyRouter from './routes/Router'
@@ -16,7 +16,7 @@ class App extends Component<any, any> {
     return (
       <div>
         <Provider store={store}>
-          <Router history={history}>{/* MyRouter.render(routes) */}</Router>
+          <Router history={history}>{MyRouter.render(routes)}</Router>
         </Provider>
       </div>
     )

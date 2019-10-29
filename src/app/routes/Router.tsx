@@ -1,5 +1,5 @@
 import React from 'react'
-import AsyncComponent from 'components/async-component'
+import AsyncComponent from '@components/async-component'
 import { Route } from 'react-router-dom'
 
 let point = 0
@@ -21,7 +21,7 @@ interface IRouterOption {
  * key={`router0`}
  * exact
  * path={`/v3/platform/test`}
- * component={AsyncComponent(() => import('pages/platform/test'))}
+ * component={AsyncComponent(() => import('@pages/platform/test'))}
  * />
  */
 export default class Router {
